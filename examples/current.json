@@ -1,0 +1,27 @@
+{
+  "data_filters": [
+    {
+      "active": true,
+      "id": "localhost"
+    },
+    {
+      "active": false,
+      "id": "filtered-transaction"
+    },
+    {
+      "active": true,
+      "id": "browser-extensions"
+    },
+    {
+      "active": [],
+      "id": "legacy-browsers"
+    },
+    {
+      "active": false,
+      "id": "web-crawlers"
+    }
+  ],
+  "filters:blacklisted_ips": "",
+  "filters:error_messages": "*ResizeObserver loop*",
+  "filters:releases": ""
+}

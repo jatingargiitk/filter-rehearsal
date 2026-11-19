@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "filter-rehearsal"
+version = "0.1.0"
+description = "Rehearse Sentry inbound filters against events you already have: see what a filter change would drop, and fail if it drops anything you marked must-keep."
+readme = "README.md"
+license = { text = "MIT" }
+authors = [{ name = "Jatin Garg" }]
+requires-python = ">=3.9"
+dependencies = []
+keywords = ["sentry", "inbound-filters", "error-monitoring", "observability", "dry-run", "ci"]
+classifiers = [
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Topic :: Software Development :: Quality Assurance",
+  "Topic :: System :: Monitoring",
+]
+
+[project.optional-dependencies]
+test = ["pytest>=7"]
+
+[project.scripts]
+filter-rehearsal = "filter_rehearsal.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/jatingargiitk/filter-rehearsal"
+
+[tool.setuptools]
+packages = ["filter_rehearsal"]

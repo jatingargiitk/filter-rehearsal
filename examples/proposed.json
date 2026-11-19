@@ -1,0 +1,15 @@
+{
+  "error_messages": [
+    "*ResizeObserver loop*",
+    "*Failed to fetch*"
+  ],
+  "releases": [
+    "shop-web@1.*"
+  ],
+  "blacklisted_ips": [
+    "10.8.0.0/16"
+  ],
+  "localhost": true,
+  "health_check": true,
+  "web-crawlers": true
+}

@@ -1,0 +1,18 @@
+[
+  {
+    "label": "checkout",
+    "tag": {
+      "flow": "checkout"
+    }
+  },
+  {
+    "label": "enterprise",
+    "tag": {
+      "customer.tier": "enterprise"
+    }
+  },
+  {
+    "label": "payments",
+    "error_type": "Payment*"
+  }
+]
