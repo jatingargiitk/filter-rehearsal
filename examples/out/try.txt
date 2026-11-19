@@ -1,0 +1,13 @@
+16 events in 13 issues/transactions
+would drop 2 events (12.5%): 1 fully, 0 partly
+
+by filter
+  custom "error_type:TypeError release:<2.0.0"  2 events  1 issue
+
+issues hit
+  all  2/2  #5106 TypeError: Cannot read properties of undefined (reading 'pr…  <- custom "error_type:TypeError release:<2.0.0"
+
+MUST-KEEP EVENTS THAT WOULD BE DROPPED: 1
+  c41e4b19 [enterprise] TypeError: Cannot read properties of undefined (reading 'pr…
+      by custom "error_type:TypeError release:<2.0.0": error_type:equals:TypeError & release:lt:2.0.0
+exit 1

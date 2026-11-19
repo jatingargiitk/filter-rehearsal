@@ -1,0 +1,32 @@
+16 events in 13 issues/transactions
+would drop 11 events (68.8%): 8 fully, 0 partly
+
+by filter
+  error_messages "*ResizeObserver loop*"  3 events   1 issue
+  error_messages "*Failed to fetch*"      2 events  2 issues
+  releases "shop-web@1.*"                 2 events   1 issue
+  blacklisted_ips 10.8.0.0/16              1 event   1 issue
+  localhost                                1 event   1 issue
+  health_check                            2 events  2 issues
+
+issues hit
+  all  3/3  #5101 Error: ResizeObserver loop completed with undelivered notif…  <- error_messages "*ResizeObserver loop*"
+  all  1/1  #5102 TypeError: Failed to fetch  <- error_messages "*Failed to fetch*"
+  all  1/1  #5103 TypeError: Failed to fetch  <- error_messages "*Failed to fetch*"
+  all  2/2  #5106 TypeError: Cannot read properties of undefined (reading 'pr…  <- releases "shop-web@1.*"
+  all  1/1  #5107 TypeError: Cannot read properties of undefined (reading 'it…  <- localhost
+  all  1/1  #5110 Error: Network request failed: timeout of 10000ms exceeded  <- blacklisted_ips 10.8.0.0/16
+  all  1/1  GET /api/healthz  <- health_check
+  all  1/1  GET /api/ping  <- health_check
+
+MUST-KEEP EVENTS THAT WOULD BE DROPPED: 2
+  91d05480 [checkout] TypeError: Failed to fetch
+      by error_messages "*Failed to fetch*": matched 'TypeError: Failed to fetch'
+  c41e4b19 [enterprise] TypeError: Cannot read properties of undefined (reading 'pr…
+      by releases "shop-web@1.*": release 'shop-web@1.9.3'
+
+notes
+  - IP filters use the IP the request came from; exports do not keep it, so user.ip_address (or _client_ip) is used (16 of 16 events used user.ip_address, 0 had no IP)
+  - localhost: matches loopback IPs (127.0.0.0/8, ::1) or a request URL host of localhost/*.localhost/127.x/::1
+  - not rehearsed: web crawlers is switched on, but its match list is not documented, so its drops are not counted
+exit 1

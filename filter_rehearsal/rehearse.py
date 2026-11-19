@@ -196,6 +196,19 @@ def render_markdown(report: dict, limit: int = 20) -> str:
     else:
         out.append("")
         out.append("No must-keep events dropped.")
+    if "baseline" in report:
+        b = report["baseline"]
+        out.append("")
+        out.append(
+            f"**vs baseline:** {len(b['newly_dropped'])} newly dropped, "
+            f"{len(b['no_longer_dropped'])} no longer dropped (baseline drops {b['dropped_events']})."
+        )
+        if b["newly_dropped"]:
+            out.append("")
+            out.append("| newly dropped | title | by |")
+            out.append("|---|---|---|")
+            for e in b["newly_dropped"][:limit]:
+                out.append(f"| `{e['event_id'][:8]}` | {_md(e['title'])} | {_md(', '.join(e['dropped_by']))} |")
     if report["by_filter"]:
         out.append("")
         out.append("| filter | events | issues |")

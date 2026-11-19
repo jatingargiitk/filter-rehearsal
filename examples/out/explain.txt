@@ -1,0 +1,8 @@
+event ae87203d243aefe737e68ce767f32949 (error) from examples/events.jsonl
+  title: com.shop.cart.CartStateException: cart is empty at checkout
+  error messages list sees: 'a.b.c: cart is empty at checkout'
+  release: 'shop-android@5.1.0'  ip: '203.0.113.10' (user.ip_address)  country: 'US'
+
+  pass  custom "error_message:*CartStateException*"
+  DROP  custom "error_type:a.b.c"  (error_type:equals:a.b.c)
+exit 0
